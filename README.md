@@ -1,36 +1,46 @@
 # Random Background Color Changer
 
-A simple JavaScript app that changes the page background to a random dark color from a predefined palette and displays the current hex code.
+A lightweight JavaScript application that updates the page background to a random dark color from a predefined palette and displays the active hex code.
 
-Built to practice arrays, randomization, DOM selection, and basic styling.
-
----
-
-## Demo
-
-The page shows:
-
-- A title: **Random Background Color changer**
-- A text line: **Hex Code: #xxxxxx**
-- A **Change Background Color** button
-
-Each click on the button:
-
-1. Picks a random hex code from an array of dark colors.
-2. Updates the page background.
-3. Updates the displayed hex code.
+Built to demonstrate DOM manipulation, array usage, randomization logic, and event-driven UI updates.
 
 ---
 
-## Tech Stack
+## Live Demo
 
-- **HTML** – structure of the heading, hex display, and button.
-- **CSS** – base color variables, button styling, typography.
-- **JavaScript** – random color selection and DOM updates.
+https://sharpsanders.github.io/random-background-changer/
+
+<img src="./img/Screenshot-random-background-changer.png" alt="Random Background Color Changer Screenshot">
 
 ---
 
-## How It Works (JavaScript Overview)
+## Overview
+
+The interface includes:
+
+- A page title  
+- A live hex color display  
+- A “Change Background Color” button  
+
+Each button click:
+
+1. Selects a random hex value from a predefined color array  
+2. Updates the document background color  
+3. Displays the selected hex code in the UI  
+
+---
+
+## Technical Highlights
+
+- Controlled random index generation using `Math.random()` and `Math.floor()`
+- Array-driven color palette management
+- Direct DOM element selection with `querySelector`
+- Dynamic style updates via `element.style`
+- Event handling using button click listeners
+
+---
+
+## Core Logic (JavaScript)
 
 ```js
 const darkColorsArr = [
@@ -47,73 +57,63 @@ const darkColorsArr = [
 ];
 
 function getRandomIndex() {
-  const randomIndex = Math.floor(darkColorsArr.length * Math.random());
-  return randomIndex;
+  return Math.floor(darkColorsArr.length * Math.random());
 }
-darkColorsArr holds a list of dark hex color codes.
 
-getRandomIndex() returns a random valid index into that array.
-
-js
-Copy code
 const body = document.querySelector("body");
 const bgHexCodeSpanElement = document.querySelector("#bg-hex-code");
 
 function changeBackgroundColor() {
   const color = darkColorsArr[getRandomIndex()];
-
   bgHexCodeSpanElement.innerText = color;
   body.style.backgroundColor = color;
 }
 
 const btn = document.querySelector("#btn");
 btn.onclick = changeBackgroundColor;
-changeBackgroundColor() grabs a random color, updates the <span> text, and changes the body background.
+Tech Stack
+HTML5
 
-The button’s onclick handler triggers this function on each click.
+CSS3
 
-How to Run
-Clone the repo:
+JavaScript (ES6+)
 
-bash
-Copy code
-git clone https://github.com/SharpSanders/random-background-changer.git
-cd random-background-changer
-Open the app:
-
-Double-click index.html
-or
-
-Use VS Code’s Live Server extension.
-
-That’s it—no build step or backend needed.
+No frameworks or build tools — fully client-side and dependency-free.
 
 Project Structure
-text
-Copy code
 random-background-changer/
-├── index.html   # Markup for heading, hex display, and button
-├── styles.css   # Color variables, button styling, basic layout
-└── script.js    # Color array, random selection, DOM updates
-What I Practiced
-Creating and using a color palette array.
+  index.html
+  styles.css
+  script.js
+  img/
+    Screenshot-random-background-changer.png
+Run Locally
+Clone the repository
 
-Using Math.random() and Math.floor() for random indices.
+Open index.html in your browser
 
-Selecting DOM elements and updating innerText and styles.
+No installation or build process required.
 
-Using CSS custom properties (:root variables) for colors.
+Skills Demonstrated
+Managing and accessing structured data with arrays
 
-Simple UI feedback from user interaction.
+Generating bounded random values
 
-Future Improvements
-Show a small history of recently used colors.
+Updating text content dynamically
 
-Add a “Copy Hex” button to copy the current color to clipboard.
+Applying inline style changes programmatically
 
-Display RGB/HSL equivalents alongside the hex code.
+Basic UI interaction patterns
 
-Add smooth transitions for background color changes.
+Potential Enhancements
+Copy-to-clipboard hex code support
+
+Display RGB and HSL equivalents
+
+Add transition animations for smoother background changes
+
+Track recently used colors
 
 Author
-Created by Trevyn Sanders.
+Trevyn Sanders
+Better Endeavors LLC
